@@ -3,90 +3,140 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Julie Le Vot</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --purple: #5F4B8B; --white: #FFFFFF; --blue: #8FABFF;
-      --peach: #FFEBC9; --pink: #F0A9B2;
-      --text: #2a2135; --muted: rgba(95,75,139,0.5); --border: rgba(95,75,139,0.12);
+      --navy:   #1B2D4F;
+      --blue:   #2563EB;
+      --blue-light: #EFF4FF;
+      --white:  #FFFFFF;
+      --text:   #1a1a2e;
+      --muted:  #6b7280;
+      --border: #e5e7eb;
     }
     body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); }
 
+    /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 4rem; background: rgba(255,255,255,0.96);
-      backdrop-filter: blur(8px); border-bottom: 1px solid var(--border);
+      padding: 1rem 4rem;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
     }
-    .nav-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 600; color: var(--purple); text-decoration: none; cursor: pointer; }
+    .nav-name {
+      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600;
+      color: var(--navy); cursor: pointer; text-decoration: none;
+    }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: var(--text); font-size: 0.82rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.5; transition: opacity 0.2s; cursor: pointer; }
-    .nav-links a:hover, .nav-links a.active { opacity: 1; color: var(--purple); }
+    .nav-links a {
+      text-decoration: none; color: var(--muted); font-size: 0.82rem;
+      font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+      transition: color 0.2s; cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
 
-    .page { display: none; min-height: 100vh; padding: 7rem 4rem 4rem; max-width: 920px; margin: 0 auto; }
+    /* PAGES */
+    .page { display: none; min-height: 100vh; padding: 7rem 4rem 5rem; max-width: 860px; margin: 0 auto; }
     .page.active { display: block; }
 
     /* HOME */
-    .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .hero-position { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--purple); opacity: 0.5; margin-bottom: 1rem; }
-    h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 600; line-height: 1.12; color: var(--purple); margin-bottom: 1.4rem; }
-    .hero-bio { font-size: 0.95rem; font-weight: 300; line-height: 1.85; opacity: 0.75; margin-bottom: 2rem; }
-    .hero-actions { display: flex; gap: 0.8rem; flex-wrap: wrap; }
-    .btn { display: inline-flex; align-items: center; padding: 0.58rem 1.2rem; border-radius: 4px; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; text-decoration: none; transition: all 0.18s; border: none; cursor: pointer; }
-    .btn-primary { background: var(--purple); color: var(--white); }
-    .btn-primary:hover { background: #4e3d74; }
-    .btn-outline { background: transparent; color: var(--purple); border: 1.5px solid rgba(95,75,139,0.35); }
-    .btn-outline:hover { border-color: var(--purple); background: rgba(95,75,139,0.04); }
+    .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
 
-    .info-panel { background: var(--purple); border-radius: 8px; padding: 2rem; }
-    .info-block { margin-bottom: 1.6rem; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem); font-weight: 600;
+      line-height: 1.1; color: var(--navy); margin-bottom: 0.4rem;
+    }
+    .hero-sub {
+      font-size: 0.85rem; color: var(--muted); margin-bottom: 1.6rem; font-weight: 400;
+    }
+    .hero-bio {
+      font-size: 0.93rem; font-weight: 300; line-height: 1.9;
+      color: var(--text); opacity: 0.8; margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.3rem;
+      padding: 0.55rem 1.15rem; border-radius: 4px; font-size: 0.82rem;
+      font-weight: 500; text-decoration: none; transition: all 0.18s;
+      border: none; cursor: pointer; letter-spacing: 0.02em;
+    }
+    .btn-primary { background: var(--blue); color: var(--white); }
+    .btn-primary:hover { background: #1d4ed8; }
+    .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
+
+    /* INFO PANEL */
+    .info-panel { border-left: 3px solid var(--blue); padding-left: 1.8rem; }
+    .info-block { margin-bottom: 1.8rem; }
     .info-block:last-child { margin-bottom: 0; }
-    .info-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); opacity: 0.45; margin-bottom: 0.45rem; }
-    .info-value { font-size: 0.88rem; line-height: 1.7; color: var(--white); opacity: 0.9; }
+    .info-label {
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
+    }
+    .info-value { font-size: 0.88rem; line-height: 1.75; color: var(--text); }
     .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
-    .tag { font-size: 0.75rem; font-weight: 500; padding: 0.25rem 0.65rem; border-radius: 3px; background: rgba(255,255,255,0.15); color: var(--white); }
+    .tag {
+      font-size: 0.75rem; font-weight: 400; padding: 0.2rem 0.65rem;
+      border-radius: 3px; background: var(--blue-light); color: var(--blue);
+    }
 
-    /* SECTION HEADER */
-    .section-header { display: flex; align-items: baseline; gap: 1.2rem; margin-bottom: 2.5rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; }
-    .section-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 600; color: var(--purple); }
-    .section-header span { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+    /* SECTION TITLE */
+    .section-title {
+      font-family: 'Playfair Display', serif; font-size: 1.6rem;
+      font-weight: 600; color: var(--navy); margin-bottom: 2.5rem;
+    }
 
-    /* RESEARCH */
-    .pub { padding: 1.4rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 60px 1fr; gap: 1rem; align-items: start; }
-    .pub-year { font-size: 0.78rem; font-weight: 500; color: var(--muted); padding-top: 0.15rem; }
-    .pub-type { display: inline-block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 2px; margin-bottom: 0.35rem; background: rgba(143,171,255,0.2); color: #3a5fd9; }
-    .pub-title { font-size: 0.92rem; font-weight: 500; color: var(--text); margin-bottom: 0.25rem; line-height: 1.4; }
-    .pub-venue { font-size: 0.82rem; color: var(--muted); font-style: italic; }
-    .pub-abstract { font-size: 0.82rem; color: var(--text); opacity: 0.65; line-height: 1.65; margin-top: 0.5rem; }
+    /* SUBSECTION */
+    .subsection { margin-bottom: 3rem; }
+    .subsection-label {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--blue);
+      margin-bottom: 1rem; padding-bottom: 0.6rem;
+      border-bottom: 1px solid var(--border);
+    }
 
-    /* CONFERENCES & TEACHING */
-    .list-item { padding: 1.1rem 0; border-top: 1px solid var(--border); display: grid; grid-template-columns: 60px 1fr auto; align-items: start; gap: 1rem; }
-    .item-year { font-size: 0.78rem; color: var(--muted); font-weight: 500; padding-top: 0.1rem; }
-    .item-title { font-size: 0.92rem; font-weight: 500; color: var(--text); margin-bottom: 0.2rem; }
-    .item-sub { font-size: 0.82rem; color: var(--muted); }
-    .item-tag { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: var(--purple); opacity: 0.6; white-space: nowrap; padding-top: 0.1rem; }
+    /* PAPER */
+    .paper { padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
+    .paper:last-child { border-bottom: none; }
+    .paper-title { font-size: 0.93rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; line-height: 1.45; }
+    .paper-coauthors { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; }
+    .paper-coauthors span { font-style: italic; }
+    .paper-abstract { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-top: 0.4rem; }
 
-    footer { background: var(--purple); color: rgba(255,255,255,0.55); padding: 1.6rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; margin-top: 4rem; }
-    footer a { color: rgba(255,255,255,0.75); text-decoration: none; margin-left: 1.5rem; }
-    footer a:hover { color: var(--white); }
+    /* SIMPLE LIST (teaching & conferences) */
+    .simple-item { padding: 0.95rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+    .simple-item:last-child { border-bottom: none; }
+    .simple-left { }
+    .simple-title { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 0.15rem; }
+    .simple-sub { font-size: 0.82rem; color: var(--muted); }
+    .simple-right { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border); padding: 1.4rem 4rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.78rem; color: var(--muted); margin-top: 4rem;
+    }
+    footer a { color: var(--muted); text-decoration: none; margin-left: 1.2rem; }
+    footer a:hover { color: var(--blue); }
 
     @media (max-width: 720px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.2rem; }
       .page { padding: 6rem 1.5rem 3rem; }
-      .home-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .list-item { grid-template-columns: 50px 1fr; }
-      .item-tag { display: none; }
-      footer { flex-direction: column; gap: 0.8rem; padding: 1.5rem; text-align: center; }
+      .home-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { flex-direction: column; gap: 0.6rem; padding: 1.2rem 1.5rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="nav-name" onclick="showPage('home')">Home</a>
+    <a class="nav-name" onclick="showPage('home')">Julie Le Vot</a>
     <ul class="nav-links">
       <li><a onclick="showPage('research')" id="nav-research">Research</a></li>
       <li><a onclick="showPage('teaching')" id="nav-teaching">Teaching</a></li>
@@ -99,11 +149,13 @@
     <div class="home-grid">
       <div>
         <h1>Julie Le Vot</h1>
+        <p class="hero-sub">PhD Student in Economics · University of Bordeaux</p>
         <p class="hero-bio">
-          I am a PhD student at Bordeaux School of Economics (University of Bordeaux).
+          I am a PhD student at the Bordeaux School of Economics (BxSE). My research focuses on the economics of the family, gender inequality, and labour markets.
         </p>
         <div class="hero-actions">
-          <a href="jlv_cv-12.pdf" class="btn btn-outline" download>CV</a>
+          <a href="jlv_cv-12.pdf" class="btn btn-outline" download>↓ CV</a>
+          <a href="YOUR_LINKEDIN_URL" class="btn btn-primary" target="_blank">LinkedIn</a>
         </div>
       </div>
       <div class="info-panel">
@@ -119,83 +171,92 @@
             <span class="tag">Labor Economics</span>
           </div>
         </div>
-
+        <div class="info-block">
+          <p class="info-label">Supervisor</p>
+          <p class="info-value">[Supervisor Name]</p>
+        </div>
       </div>
     </div>
   </div>
 
   <!-- RESEARCH -->
   <div class="page" id="page-research">
-    <div class="section-header">
-      <h2>Research</h2>
-      <span>Working Papers</span>
-        <p class="pub-title">Parental Leave Policy and Gender Attitudes, with Olivier Bargain and Nicolas Hérault</p>
-        
-      <span> Work in Progress</span>
+    <h2 class="section-title">Research</h2>
+
+    <div class="subsection">
+      <p class="subsection-label">Working Papers</p>
+      <div class="paper">
+        <p class="paper-title">Title of Your Working Paper</p>
+        <p class="paper-coauthors">With <span>Co-author Name</span> and <span>Co-author Name</span></p>
+        <p class="paper-abstract">
+          Short abstract describing the paper's question, approach, and main finding. Two or three sentences.
+        </p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <p class="subsection-label">Work in Progress</p>
+      <div class="paper">
+        <p class="paper-title">Title of an Ongoing Project</p>
+        <p class="paper-coauthors">Solo</p>
+      </div>
+      <div class="paper">
+        <p class="paper-title">Another Project in Progress</p>
+        <p class="paper-coauthors">With <span>Co-author Name</span></p>
+      </div>
     </div>
   </div>
 
   <!-- TEACHING -->
   <div class="page" id="page-teaching">
-    <div class="section-header">
-      <h2>Teaching</h2>
-      <span>Courses & tutorials</span>
-    </div>
-    <div class="list-item">
-      <span class="item-year">2024</span>
-      <div>
-        <p class="item-title">Course Title</p>
-        <p class="item-sub">[Institution] · [Semester]</p>
+    <h2 class="section-title">Teaching</h2>
+    <div class="simple-item">
+      <div class="simple-left">
+        <p class="simple-title">Course Title</p>
+        <p class="simple-sub">[Institution] · [Level]</p>
       </div>
-      <span class="item-tag">Master's</span>
+      <span class="simple-right">2024</span>
     </div>
-    <div class="list-item">
-      <span class="item-year">2023</span>
-      <div>
-        <p class="item-title">Course Title</p>
-        <p class="item-sub">[Institution] · [Semester]</p>
+    <div class="simple-item">
+      <div class="simple-left">
+        <p class="simple-title">Course Title</p>
+        <p class="simple-sub">[Institution] · [Level]</p>
       </div>
-      <span class="item-tag">Bachelor's</span>
+      <span class="simple-right">2023</span>
     </div>
   </div>
 
   <!-- CONFERENCES -->
   <div class="page" id="page-conferences">
-    <div class="section-header">
-      <h2>Conferences</h2>
-      <span>Talks & presentations</span>
-    </div>
-    <div class="list-item">
-      <span class="item-year">2024</span>
-      <div>
-        <p class="item-title">Talk or Paper Title</p>
-        <p class="item-sub">Conference Name · City, Country</p>
+    <h2 class="section-title">Conferences</h2>
+    <div class="simple-item">
+      <div class="simple-left">
+        <p class="simple-title">Conference Name</p>
+        <p class="simple-sub">City, Country</p>
       </div>
-      <span class="item-tag">Paper</span>
+      <span class="simple-right">2024</span>
     </div>
-    <div class="list-item">
-      <span class="item-year">2024</span>
-      <div>
-        <p class="item-title">Talk or Paper Title</p>
-        <p class="item-sub">Conference Name · City, Country</p>
+    <div class="simple-item">
+      <div class="simple-left">
+        <p class="simple-title">Conference Name</p>
+        <p class="simple-sub">City, Country</p>
       </div>
-      <span class="item-tag">Poster</span>
+      <span class="simple-right">2024</span>
     </div>
-    <div class="list-item">
-      <span class="item-year">2023</span>
-      <div>
-        <p class="item-title">Talk or Paper Title</p>
-        <p class="item-sub">Conference Name · City, Country</p>
+    <div class="simple-item">
+      <div class="simple-left">
+        <p class="simple-title">Conference Name</p>
+        <p class="simple-sub">City, Country</p>
       </div>
-      <span class="item-tag">Paper</span>
+      <span class="simple-right">2023</span>
     </div>
   </div>
 
   <footer>
-    <span>© 2026 Your Name</span>
+    <span>© 2026 Julie Le Vot</span>
     <div>
       <a href="YOUR_LINKEDIN_URL" target="_blank">LinkedIn</a>
-      <a href="mailto:you@institution.edu">Email</a>
+      <a href="mailto:you@u-bordeaux.fr">Email</a>
     </div>
   </footer>
 

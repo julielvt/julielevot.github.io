@@ -1,432 +1,337 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julie Le Vot</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
-  <style>
-  *, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julie Le Vot</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --accent:#B76E4C;
+  --accent-light:#F5ECE7;
+  --text:#2D2D2D;
+  --muted:#6B7280;
+  --border:#E8E2DC;
+  --bg:#FFFFFF;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Inter',sans-serif;
+  color:var(--text);
+  background:white;
+  line-height:1.7;
+}
+
+nav{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  background:white;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:1rem 3rem;
+  z-index:100;
+}
+
+.nav-name{
+  font-family:'Playfair Display',serif;
+  font-size:1.1rem;
+  font-weight:600;
+  color:var(--text);
+  cursor:pointer;
+}
+
+.nav-links{
+  list-style:none;
+  display:flex;
+  gap:2rem;
+}
+
+.nav-links a{
+  cursor:pointer;
+  color:var(--muted);
+  text-decoration:none;
+  font-size:.85rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.nav-links a:hover,
+.nav-links a.active{
+  color:var(--accent);
+}
+
+.page{
+  display:none;
+  max-width:950px;
+  margin:auto;
+  padding:7rem 2rem 4rem;
+}
+
+.page.active{
+  display:block;
+}
+
+.home-grid{
+  display:grid;
+  grid-template-columns:1.3fr .9fr;
+  gap:4rem;
+}
+
+h1{
+  font-family:'Playfair Display',serif;
+  font-size:3rem;
+  margin-bottom:.3rem;
+}
+
+.name-line{
+  width:90px;
+  height:3px;
+  background:var(--accent);
+  margin:1rem 0 1.5rem;
+}
+
+.hero-sub{
+  color:var(--muted);
+  margin-bottom:1.5rem;
+}
+
+.hero-bio{
+  max-width:600px;
+  margin-bottom:2rem;
+}
+
+.hero-actions{
+  display:flex;
+  gap:.8rem;
+}
+
+.btn{
+  text-decoration:none;
+  padding:.65rem 1.2rem;
+  border-radius:4px;
+  font-size:.85rem;
+}
+
+.btn-primary{
+  background:var(--accent);
+  color:white;
+}
+
+.btn-outline{
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.info-panel{
+  background:var(--accent-light);
+  padding:1.8rem;
+  border-radius:8px;
+}
+
+.info-block{
+  margin-bottom:1.5rem;
+}
+
+.info-label{
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  font-weight:600;
+  margin-bottom:.5rem;
+}
+
+.section-title{
+  font-family:'Playfair Display',serif;
+  font-size:2rem;
+  margin-bottom:2rem;
+}
+
+.paper,
+.simple-item{
+  padding:1.2rem 0;
+  border-bottom:1px solid var(--border);
+}
+
+.paper-title,
+.simple-title{
+  font-weight:500;
+  margin-bottom:.3rem;
+}
+
+.paper-coauthors,
+.paper-abstract,
+.simple-sub{
+  color:var(--muted);
+  font-size:.9rem;
+}
+
+footer{
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:2rem;
+  color:var(--muted);
+  margin-top:4rem;
+}
+
+@media(max-width:800px){
+  .home-grid{
+    grid-template-columns:1fr;
   }
 
-  :root {
-    --navy: #2F3A4A;
-    --terracotta: #B76E4C;
-    --terracotta-dark: #9D5C3E;
-    --terracotta-light: #F6EEE9;
-    --white: #FFFFFF;
-    --text: #2D2D2D;
-    --muted: #6B7280;
-    --border: #E7E1DB;
+  nav{
+    padding:1rem;
   }
 
-  body {
-    font-family: 'Inter', sans-serif;
-    background: var(--white);
-    color: var(--text);
+  .page{
+    padding:6rem 1.25rem 3rem;
   }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 4rem;
-    background: rgba(255,255,255,0.97);
-    border-bottom: 1px solid var(--border);
-  }
-
-  .nav-name {
-    font-family: 'Playfair Display', serif;
-    font-size: 1rem;
-    font-weight: 600;
-    color: var(--navy);
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: 0.82rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    transition: color 0.2s;
-    cursor: pointer;
-  }
-
-  .nav-links a:hover,
-  .nav-links a.active {
-    color: var(--terracotta);
-  }
-
-  .page {
-    display: none;
-    min-height: 100vh;
-    padding: 7rem 4rem 5rem;
-    max-width: 860px;
-    margin: 0 auto;
-  }
-
-  .page.active {
-    display: block;
-  }
-
-  .home-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5rem;
-    align-items: start;
-  }
-
-  h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 4vw, 3rem);
-    font-weight: 600;
-    line-height: 1.1;
-    color: var(--navy);
-    margin-bottom: 0.4rem;
-  }
-
-  .hero-sub {
-    font-size: 0.85rem;
-    color: var(--muted);
-    margin-bottom: 1.6rem;
-  }
-
-  .hero-bio {
-    font-size: 0.93rem;
-    font-weight: 300;
-    line-height: 1.9;
-    color: var(--text);
-    opacity: 0.85;
-    margin-bottom: 2rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 0.7rem;
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    padding: 0.55rem 1.15rem;
-    border-radius: 4px;
-    font-size: 0.82rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: all 0.18s;
-    cursor: pointer;
-  }
-
-  .btn-primary {
-    background: var(--terracotta);
-    color: white;
-    border: none;
-  }
-
-  .btn-primary:hover {
-    background: var(--terracotta-dark);
-  }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--navy);
-    border: 1px solid var(--border);
-  }
-
-  .btn-outline:hover {
-    border-color: var(--terracotta);
-    color: var(--terracotta);
-  }
-
-  .info-panel {
-    border-left: 1px solid var(--border);
-    padding-left: 2rem;
-  }
-
-  .info-block {
-    margin-bottom: 1.8rem;
-  }
-
-  .info-label {
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.55rem;
-  }
-
-  .info-value {
-    font-size: 0.88rem;
-    line-height: 1.8;
-    color: var(--text);
-  }
-
-  .section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: var(--navy);
-    margin-bottom: 2.5rem;
-  }
-
-  .subsection {
-    margin-bottom: 3rem;
-  }
-
-  .subsection-label {
-    font-size: 0.72rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 1rem;
-    padding-bottom: 0.6rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .paper {
-    padding: 1.2rem 0;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .paper-title {
-    font-size: 0.93rem;
-    font-weight: 500;
-    color: var(--text);
-    margin-bottom: 0.3rem;
-    line-height: 1.45;
-  }
-
-  .paper-coauthors {
-    font-size: 0.82rem;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
-  }
-
-  .paper-coauthors span {
-    font-style: italic;
-  }
-
-  .paper-abstract {
-    font-size: 0.82rem;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-top: 0.4rem;
-  }
-
-  .simple-item {
-    padding: 0.95rem 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 1rem;
-  }
-
-  .simple-title {
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-
-  .simple-sub {
-    font-size: 0.82rem;
-    color: var(--muted);
-  }
-
-  .simple-right {
-    font-size: 0.78rem;
-    color: var(--muted);
-    white-space: nowrap;
-  }
-
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.4rem 4rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.78rem;
-    color: var(--muted);
-    margin-top: 4rem;
-  }
-
-  footer a {
-    color: var(--muted);
-    text-decoration: none;
-    margin-left: 1.2rem;
-  }
-
-  footer a:hover {
-    color: var(--terracotta);
-  }
-
-  @media (max-width: 720px) {
-    nav {
-      padding: 1rem 1.5rem;
-    }
-
-    .page {
-      padding: 6rem 1.5rem 3rem;
-    }
-
-    .home-grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    footer {
-      flex-direction: column;
-      gap: 0.6rem;
-      padding: 1.2rem 1.5rem;
-      text-align: center;
-    }
-  }
+}
 </style>
 
-  <!-- HOME -->
-  <div class="page active" id="page-home">
-    <div class="home-grid">
-      <div>
-        <h1>Julie Le Vot</h1>
-        <p class="hero-sub">PhD Student in Economics · University of Bordeaux</p>
-        <p class="hero-bio">
-          I am a PhD student at the Bordeaux School of Economics (BxSE). 
-        </p>
-        <div class="hero-actions">
-          <a href="jlv_cv-12.pdf" class="btn btn-outline" download>CV</a>
-        </div>
-      </div>
-      <div class="info-panel">
-        <div class="info-block">
-          <p class="info-label">Position</p>
-          <p class="info-value">PhD Student in Economics<br />BxSE, University of Bordeaux</p>
-        </div>
-        <div class="info-block">
-      
-  <p class="info-label">Research Interests</p>
-  <p class="info-value">
-    Economics of the Family · Gender Inequality · Labor Economics
+</head>
+
+<body>
+
+<nav>
+  <div class="nav-name" onclick="showPage('home')">Julie Le Vot</div>
+
+  <ul class="nav-links">
+    <li><a id="nav-research" onclick="showPage('research')">Research</a></li>
+    <li><a id="nav-teaching" onclick="showPage('teaching')">Teaching</a></li>
+    <li><a id="nav-conferences" onclick="showPage('conferences')">Conferences</a></li>
+  </ul>
+</nav>
+
+<div class="page active" id="page-home">
+
+  <div class="home-grid">
+
+```
+<div>
+  <h1>Julie Le Vot</h1>
+
+  <div class="name-line"></div>
+
+  <p class="hero-sub">
+    PhD Student in Economics · University of Bordeaux
   </p>
+
+  <p class="hero-bio">
+    I am a PhD student at the Bordeaux School of Economics (BxSE).
+    My research focuses on family economics, gender inequality,
+    and labour markets.
+  </p>
+
+  <div class="hero-actions">
+    <a href="jlv_cv-12.pdf" class="btn btn-primary">
+      Download CV
+    </a>
+
+    <a href="mailto:your@email.com" class="btn btn-outline">
+      Contact
+    </a>
+  </div>
 </div>
-        
 
+<div class="info-panel">
 
-        </div>
-      </div>
-    </div>
+  <div class="info-block">
+    <div class="info-label">Position</div>
+    PhD Student in Economics<br>
+    Bordeaux School of Economics
   </div>
 
-  <!-- RESEARCH -->
-  <div class="page" id="page-research">
-    <h2 class="section-title">Research</h2>
-
-    <div class="subsection">
-      <p class="subsection-label">Working Papers</p>
-      <div class="paper">
-        <p class="paper-title">Title of Your Working Paper</p>
-        <p class="paper-coauthors">With <span>Co-author Name</span> and <span>Co-author Name</span></p>
-        <p class="paper-abstract">
-          Short abstract describing the paper's question, approach, and main finding. Two or three sentences.
-        </p>
-      </div>
-    </div>
-
-    <div class="subsection">
-      <p class="subsection-label">Work in Progress</p>
-      <div class="paper">
-        <p class="paper-title">Title of an Ongoing Project</p>
-        <p class="paper-coauthors">Solo</p>
-      </div>
-      <div class="paper">
-        <p class="paper-title">Another Project in Progress</p>
-        <p class="paper-coauthors">With <span>Co-author Name</span></p>
-      </div>
-    </div>
+  <div class="info-block">
+    <div class="info-label">Research Interests</div>
+    Economics of the Family · Gender Inequality · Labor Economics
   </div>
 
-  <!-- TEACHING -->
-  <div class="page" id="page-teaching">
-    <h2 class="section-title">Teaching</h2>
-    <div class="simple-item">
-      <div class="simple-left">
-        <p class="simple-title">Course Title</p>
-        <p class="simple-sub">[Institution] · [Level]</p>
-      </div>
-      <span class="simple-right">2024</span>
-    </div>
-    <div class="simple-item">
-      <div class="simple-left">
-        <p class="simple-title">Course Title</p>
-        <p class="simple-sub">[Institution] · [Level]</p>
-      </div>
-      <span class="simple-right">2023</span>
-    </div>
+  <div class="info-block">
+    <div class="info-label">Supervisor</div>
+    Supervisor Name
   </div>
 
-  <!-- CONFERENCES -->
-  <div class="page" id="page-conferences">
-    <h2 class="section-title">Conferences</h2>
-    <div class="simple-item">
-      <div class="simple-left">
-        <p class="simple-title">Conference Name</p>
-        <p class="simple-sub">City, Country</p>
-      </div>
-      <span class="simple-right">2024</span>
-    </div>
-    <div class="simple-item">
-      <div class="simple-left">
-        <p class="simple-title">Conference Name</p>
-        <p class="simple-sub">City, Country</p>
-      </div>
-      <span class="simple-right">2024</span>
-    </div>
-    <div class="simple-item">
-      <div class="simple-left">
-        <p class="simple-title">Conference Name</p>
-        <p class="simple-sub">City, Country</p>
-      </div>
-      <span class="simple-right">2023</span>
-    </div>
+</div>
+```
+
   </div>
 
-  <footer>
-    <span>© 2026 Julie Le Vot</span>
+</div>
+
+<div class="page" id="page-research">
+  <h2 class="section-title">Research</h2>
+
+  <div class="paper">
+    <div class="paper-title">Working Paper Title</div>
+    <div class="paper-coauthors">with Coauthor Name</div>
+    <div class="paper-abstract">
+      Brief abstract of the paper.
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-teaching">
+  <h2 class="section-title">Teaching</h2>
+
+  <div class="simple-item">
     <div>
-      <a href="YOUR_LINKEDIN_URL" target="_blank">LinkedIn</a>
-      <a href="mailto:you@u-bordeaux.fr">Email</a>
+      <div class="simple-title">Course Title</div>
+      <div class="simple-sub">University of Bordeaux</div>
     </div>
-  </footer>
+  </div>
+</div>
 
-  <script>
-    function showPage(name) {
-      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-      document.getElementById('page-' + name).classList.add('active');
-      const navEl = document.getElementById('nav-' + name);
-      if (navEl) navEl.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-  </script>
+<div class="page" id="page-conferences">
+  <h2 class="section-title">Conferences</h2>
+
+  <div class="simple-item">
+    <div>
+      <div class="simple-title">Conference Name</div>
+      <div class="simple-sub">City, Country · 2025</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  © 2026 Julie Le Vot
+</footer>
+
+<script>
+function showPage(name){
+
+  document.querySelectorAll('.page').forEach(page=>{
+    page.classList.remove('active');
+  });
+
+  document.querySelectorAll('.nav-links a').forEach(link=>{
+    link.classList.remove('active');
+  });
+
+  document.getElementById('page-'+name).classList.add('active');
+
+  const nav=document.getElementById('nav-'+name);
+
+  if(nav){
+    nav.classList.add('active');
+  }
+
+  window.scrollTo(0,0);
+}
+</script>
 
 </body>
 </html>

@@ -6,143 +6,302 @@
   <title>Julie Le Vot</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --navy:   #1B2D4F;
-      --blue:   #2563EB;
-      --blue-light: #EFF4FF;
-      --white:  #FFFFFF;
-      --text:   #1a1a2e;
-      --muted:  #6b7280;
-      --border: #e5e7eb;
-    }
-    body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); }
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    /* NAV */
+  :root {
+    --navy: #2F3A4A;
+    --terracotta: #B76E4C;
+    --terracotta-dark: #9D5C3E;
+    --terracotta-light: #F6EEE9;
+    --white: #FFFFFF;
+    --text: #2D2D2D;
+    --muted: #6B7280;
+    --border: #E7E1DB;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--white);
+    color: var(--text);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background: rgba(255,255,255,0.97);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--navy);
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--terracotta);
+  }
+
+  .page {
+    display: none;
+    min-height: 100vh;
+    padding: 7rem 4rem 5rem;
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .page.active {
+    display: block;
+  }
+
+  .home-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.6rem;
+  }
+
+  .hero-bio {
+    font-size: 0.93rem;
+    font-weight: 300;
+    line-height: 1.9;
+    color: var(--text);
+    opacity: 0.85;
+    margin-bottom: 2rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 4px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.18s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: white;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: var(--terracotta-dark);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--navy);
+    border: 1px solid var(--border);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--terracotta);
+    color: var(--terracotta);
+  }
+
+  .info-panel {
+    border-left: 1px solid var(--border);
+    padding-left: 2rem;
+  }
+
+  .info-block {
+    margin-bottom: 1.8rem;
+  }
+
+  .info-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.55rem;
+  }
+
+  .info-value {
+    font-size: 0.88rem;
+    line-height: 1.8;
+    color: var(--text);
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2.5rem;
+  }
+
+  .subsection {
+    margin-bottom: 3rem;
+  }
+
+  .subsection-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .paper {
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .paper-title {
+    font-size: 0.93rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    line-height: 1.45;
+  }
+
+  .paper-coauthors {
+    font-size: 0.82rem;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .paper-coauthors span {
+    font-style: italic;
+  }
+
+  .paper-abstract {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-top: 0.4rem;
+  }
+
+  .simple-item {
+    padding: 0.95rem 0;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .simple-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .simple-sub {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .simple-right {
+    font-size: 0.78rem;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.4rem 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 4rem;
+  }
+
+  footer a {
+    color: var(--muted);
+    text-decoration: none;
+    margin-left: 1.2rem;
+  }
+
+  footer a:hover {
+    color: var(--terracotta);
+  }
+
+  @media (max-width: 720px) {
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1rem 4rem;
-      background: rgba(255,255,255,0.97);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-name {
-      font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 600;
-      color: var(--navy); cursor: pointer; text-decoration: none;
-    }
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      text-decoration: none; color: var(--muted); font-size: 0.82rem;
-      font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
-      transition: color 0.2s; cursor: pointer;
-    }
-    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
-
-    /* PAGES */
-    .page { display: none; min-height: 100vh; padding: 7rem 4rem 5rem; max-width: 860px; margin: 0 auto; }
-    .page.active { display: block; }
-
-    /* HOME */
-    .home-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
-
-    h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 3rem); font-weight: 600;
-      line-height: 1.1; color: var(--navy); margin-bottom: 0.4rem;
-    }
-    .hero-sub {
-      font-size: 0.85rem; color: var(--muted); margin-bottom: 1.6rem; font-weight: 400;
-    }
-    .hero-bio {
-      font-size: 0.93rem; font-weight: 300; line-height: 1.9;
-      color: var(--text); opacity: 0.8; margin-bottom: 2rem;
-    }
-    .hero-actions { display: flex; gap: 0.7rem; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.3rem;
-      padding: 0.55rem 1.15rem; border-radius: 4px; font-size: 0.82rem;
-      font-weight: 500; text-decoration: none; transition: all 0.18s;
-      border: none; cursor: pointer; letter-spacing: 0.02em;
-    }
-    .btn-primary { background: var(--blue); color: var(--white); }
-    .btn-primary:hover { background: #1d4ed8; }
-    .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--border); }
-    .btn-outline:hover { border-color: var(--blue); color: var(--blue); }
-
-    /* INFO PANEL */
-    .info-panel { border-left: 3px solid var(--blue); padding-left: 1.8rem; }
-    .info-block { margin-bottom: 1.8rem; }
-    .info-block:last-child { margin-bottom: 0; }
-    .info-label {
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--muted); margin-bottom: 0.5rem;
-    }
-    .info-value { font-size: 0.88rem; line-height: 1.75; color: var(--text); }
-    .tag-list { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
-    .tag {
-      font-size: 0.75rem; font-weight: 400; padding: 0.2rem 0.65rem;
-      border-radius: 3px; background: var(--blue-light); color: var(--blue);
+      padding: 1rem 1.5rem;
     }
 
-    /* SECTION TITLE */
-    .section-title {
-      font-family: 'Playfair Display', serif; font-size: 1.6rem;
-      font-weight: 600; color: var(--navy); margin-bottom: 2.5rem;
+    .page {
+      padding: 6rem 1.5rem 3rem;
     }
 
-    /* SUBSECTION */
-    .subsection { margin-bottom: 3rem; }
-    .subsection-label {
-      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--blue);
-      margin-bottom: 1rem; padding-bottom: 0.6rem;
-      border-bottom: 1px solid var(--border);
+    .home-grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
     }
 
-    /* PAPER */
-    .paper { padding: 1.2rem 0; border-bottom: 1px solid var(--border); }
-    .paper:last-child { border-bottom: none; }
-    .paper-title { font-size: 0.93rem; font-weight: 500; color: var(--text); margin-bottom: 0.3rem; line-height: 1.45; }
-    .paper-coauthors { font-size: 0.82rem; color: var(--muted); margin-bottom: 0.3rem; }
-    .paper-coauthors span { font-style: italic; }
-    .paper-abstract { font-size: 0.82rem; color: var(--muted); line-height: 1.7; margin-top: 0.4rem; }
-
-    /* SIMPLE LIST (teaching & conferences) */
-    .simple-item { padding: 0.95rem 0; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-    .simple-item:last-child { border-bottom: none; }
-    .simple-left { }
-    .simple-title { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 0.15rem; }
-    .simple-sub { font-size: 0.82rem; color: var(--muted); }
-    .simple-right { font-size: 0.78rem; color: var(--muted); white-space: nowrap; }
-
-    /* FOOTER */
     footer {
-      border-top: 1px solid var(--border); padding: 1.4rem 4rem;
-      display: flex; justify-content: space-between; align-items: center;
-      font-size: 0.78rem; color: var(--muted); margin-top: 4rem;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
     }
-    footer a { color: var(--muted); text-decoration: none; margin-left: 1.2rem; }
-    footer a:hover { color: var(--blue); }
-
-    @media (max-width: 720px) {
-      nav { padding: 1rem 1.5rem; }
-      .nav-links { gap: 1.2rem; }
-      .page { padding: 6rem 1.5rem 3rem; }
-      .home-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { flex-direction: column; gap: 0.6rem; padding: 1.2rem 1.5rem; text-align: center; }
-    }
-  </style>
-</head>
-<body>
-
-  <nav>
-    <a class="nav-name" onclick="showPage('home')">Julie Le Vot</a>
-    <ul class="nav-links">
-      <li><a onclick="showPage('research')" id="nav-research">Research</a></li>
-      <li><a onclick="showPage('teaching')" id="nav-teaching">Teaching</a></li>
-      <li><a onclick="showPage('conferences')" id="nav-conferences">Conferences</a></li>
-    </ul>
-  </nav>
+  }
+</style>
 
   <!-- HOME -->
   <div class="page active" id="page-home">
@@ -164,12 +323,13 @@
           <p class="info-value">PhD Student in Economics<br />BxSE, University of Bordeaux</p>
         </div>
         <div class="info-block">
-          <p class="info-label">Research Interests</p>
-          <div class="tag-list">
-            <span class="tag">Economics of the Family</span>
-            <span class="tag">Gender Inequality</span>
-            <span class="tag">Labor Economics</span>
-          </div>
+      
+  <p class="info-label">Research Interests</p>
+  <p class="info-value">
+    Economics of the Family · Gender Inequality · Labor Economics
+  </p>
+</div>
+        
         </div>
         <div class="info-block">
           <p class="info-label">Supervisor</p>
